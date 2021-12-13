@@ -65,9 +65,9 @@ DenseNet sẽ khác so với ResNet đó là chúng ta không cộng trực ti�
 - **input_tensor**: tensor Keras tùy chọn (tức là đầu ra của layers.Input()) để sử dụng làm đầu vào hình ảnh cho mô hình.
 - **input_shape**: bộ hình dạng(shape) tùy chọn. Chỉ được chỉ định khi **include_top** là False.Nếu không hình dạng đầu vào phải có chính xác 3 kênh đầu vào và chiều rộng và chiều cao không được nhỏ hơn 32. Ví dụ: (200, 200, 3)sẽ là một giá trị hợp lệ.
 - **pooling**: Bắt buộc khi **include_top** là False. Gồm một trong các giá trị:
-  -  None (đầu ra của mô hình sẽ là đầu ra tensor 4D của khối chập cuối cùng). 
-  -  'avg' (trung bình cộng sẽ được áp dụng cho đầu ra của khối chập cuối cùng và do đó đầu ra của mô hình sẽ là một tensor 2D). 
-  -  'max' ( tổng sẽ được áp dụng cho đầu ra của khối chập cuối cùng).
+  -  None: đầu ra của mô hình sẽ là đầu ra tensor 4D của khối chập cuối cùng. 
+  -  'avg': trung bình cộng sẽ được áp dụng cho đầu ra của khối chập cuối cùng và do đó đầu ra của mô hình sẽ là một tensor 2D. 
+  -  'max': tổng sẽ được áp dụng cho đầu ra của khối chập cuối cùng.
 - **class** :số lớp tùy chọn để phân loại hình ảnh thành, chỉ được chỉ định nếu **include_top** là True và  **weights** không được chỉ định (None).
 #### các siêu tham số liên quan đến cấu trúc mạng
 - **Number of Hidden Layers and units**: số lớp ẩn của mô hình
@@ -81,3 +81,18 @@ DenseNet sẽ khác so với ResNet đó là chúng ta không cộng trực ti�
 - **Batch size**: số lượng mẫu được cung cấp cho mạng để cập nhật trọng số.
 ### Các cách điều chỉnh siêu tham số cho mô hình
 #### **Manual Search (Tìm kiếm thủ công)**:
+ Ý tưởng là đầu tiên thực hiện các bước nhảy vọt về giá trị và sau đó là những bước nhảy nhỏ để tập trung vào một giá trị cụ thể hoạt động tốt hơn.
+#### **Grid Search (Xác nhận chéo)**:
+Ý tưởng của Grid Search là thử tất cả các kết hợp đầy đủ của các giá trị tham số do chính mình cung cấp và chọn giá trị tốt nhất trong số đó.
+#### **Random Search(Tìm kiếm ngẫu nhiên)**:
+Ý tưởng của Random Search cũng giống như Grid Search, tuy nhiên Grid Search phải thử **tất cả** các kết hợp tham số, còn Random Search chỉ có thể chọn một vài kết hợp **ngẫu nhiên** trong số tất cả các kết hợp có sẵn.
+#### **Bayesian Optimization**:
+Ý tưởng của Bayesian Optimization là đưa ra một dự đoán thông minh về kết hợp tiếp theo sẽ được thử bằng cách xem kết quả của các kết hợp trước đó. Bất kỳ bộ siêu thông số nào tạo ra kết quả tốt hơn, nó sẽ hướng tới các giá trị đó. Do đó, tối ưu hóa việc lựa chọn các siêu tham số.
+## **Áp dụng vào bài toán cụ thể**
+### Bài toán & bộ dữ liệu sử dụng
+- Bài toán : phát hiện người bị nhiễm COVID thông qua ảnh chụp  CT Scan.
+- Bộ dữ liệu sử dụng : [data](https://www.kaggle.com/maedemaftouni/large-covid19-ct-slice-dataset)
+#### **Lý do sử dụng DenseNet cho bài toán**:
+- Đây là bài toán phân lớp hình ảnh (phù hợp với model tìm hiểu).
+- Bộ data đủ lớn và khá đa dạng.
+### Mã nguồn áp dụng & kết quả 
