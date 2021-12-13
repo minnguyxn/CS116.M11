@@ -167,7 +167,9 @@ Vì Keras Tuner giúp dễ dàng xác định không gian tìm kiếm và tận 
 - Đây là bài toán phân lớp hình ảnh (phù hợp với model tìm hiểu).
 - Bộ data đủ lớn và khá đa dạng.
 ### Mã nguồn áp dụng & kết quả 
-[Colab](https://colab.research.google.com/drive/1u_Qj7UJ_cr2gZL9TunJ4qFFYrCNd3JLK#scrollTo=-fv5IT3ZP97z)
+[Colab: DenseNet](https://colab.research.google.com/drive/1u_Qj7UJ_cr2gZL9TunJ4qFFYrCNd3JLK?usp=sharing)
+#### **kết quả:
+![alt text](https://github.com/minz1337/CS116.M11/blob/main/image/Result.png)
 ## TÀI LIỆU THAM KHẢO 
 [**[1] Đánh giá mạng DenseNet**](https://towardsdatascience.com/review-densenet-image-classification-b6631a8ef803)
 
