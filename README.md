@@ -84,10 +84,52 @@ DenseNet sẽ khác so với ResNet đó là chúng ta không cộng trực ti�
  Ý tưởng là đầu tiên thực hiện các bước nhảy vọt về giá trị và sau đó là những bước nhảy nhỏ để tập trung vào một giá trị cụ thể hoạt động tốt hơn.
 #### **Grid Search (Xác nhận chéo)**:
 Ý tưởng của Grid Search là thử tất cả các kết hợp đầy đủ của các giá trị tham số do chính mình cung cấp và chọn giá trị tốt nhất trong số đó.
+
+    from sklearn.model_selection import GridSearchCV
+    batch_size = [10, 20, 40, 60, 80, 100,200,500]
+    epochs = [10, 50, 100]
+    learn_rate = [0.001, 0.01, 0.1, 0.2, 0.3]
+    momentum = [0.0, 0.2, 0.4, 0.6, 0.8, 0.9]
+    init_mode = ['uniform', 'lecun_uniform', 'normal', 'zero', 'glorot_normal', 'glorot_uniform', 'he_normal', 'he_uniform']
+    activation = ['softmax', 'softplus', 'softsign', 'relu', 'tanh', 'sigmoid', 'hard_sigmoid', 'linear']
+    weight_constraint = [1, 2, 3, 4, 5]
+    dropout_rate = [0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]
+    param_grid = dict(batch_size=batch_size, epochs=epochs,learn_rate=learn_rate, momentum=momentum,init_mode=init_mode,activation=activation,dropout_rate=dropout_rate,          weight_constraint=weight_constraint)
+    grid = GridSearchCV(estimator=model, param_grid=param_grid, n_jobs=-1, cv=3)
+    grid_result = grid.fit(X, Y)
+    
+    print("Best: %f using %s" % (grid_result.best_score_, grid_result.best_params_))
+    means = grid_result.cv_results_['mean_test_score']
+    stds = grid_result.cv_results_['std_test_score']
+    params = grid_result.cv_results_['params']
+    for mean, stdev, param in zip(means, stds, params):
+    print("%f (%f) with: %r" % (mean, stdev, param))
 #### **Random Search(Tìm kiếm ngẫu nhiên)**:
 Ý tưởng của Random Search cũng giống như Grid Search, tuy nhiên Grid Search phải thử **tất cả** các kết hợp tham số, còn Random Search chỉ có thể chọn một vài kết hợp **ngẫu nhiên** trong số tất cả các kết hợp có sẵn.
+
+    
+    from kerastuner import RandomSearch
+    tuner = RandomSearch(build_model,
+                        objective='val_accuracy',
+                        max_trials = 5)
+
+    tuner.search(train_df,train_labl,epochs=3,validation_data=(train_df,train_labl))
+    model=tuner.get_best_models(num_models=1)[0]
+    model.summary()
 #### **Bayesian Optimization**:
 Ý tưởng của Bayesian Optimization là đưa ra một dự đoán thông minh về kết hợp tiếp theo sẽ được thử bằng cách xem kết quả của các kết hợp trước đó. Bất kỳ bộ siêu thông số nào tạo ra kết quả tốt hơn, nó sẽ hướng tới các giá trị đó. Do đó, tối ưu hóa việc lựa chọn các siêu tham số.
+    from skopt import BayesSearchCV
+    batch_size = [10, 20, 40, 60, 80, 100,200,500]
+    epochs = [10, 50, 100]
+    learn_rate = [0.001, 0.01, 0.1, 0.2, 0.3]
+    momentum = [0.0, 0.2, 0.4, 0.6, 0.8, 0.9]
+    init_mode = ['uniform', 'lecun_uniform', 'normal', 'zero', 'glorot_normal', 'glorot_uniform', 'he_normal', 'he_uniform']
+    activation = ['softmax', 'softplus', 'softsign', 'relu', 'tanh', 'sigmoid', 'hard_sigmoid', 'linear']
+    weight_constraint = [1, 2, 3, 4, 5]
+    dropout_rate = [0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]
+    params = dict(batch_size=batch_size, epochs=epochs,learn_rate=learn_rate, momentum=momentum,init_mode=init_mode,activation=activation,dropout_rate=dropout_rate,          weight_constraint=weight_constraint)
+    search = BayesSearchCV(estimator=model(), search_spaces=params, n_jobs=-1, cv=cv)
+    model.summary()
 #### **Keras tuner**:
 Vì Keras Tuner giúp dễ dàng xác định không gian tìm kiếm và tận dụng các thuật toán bao gồm để tìm các giá trị siêu tham số tốt nhất, do đó nhóm sử dụng keras tuner để tìm các siêu tham số.
 1. pooling:
