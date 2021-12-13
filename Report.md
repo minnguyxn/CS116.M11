@@ -168,3 +168,12 @@ Vì Keras Tuner giúp dễ dàng xác định không gian tìm kiếm và tận 
 - Bộ data đủ lớn và khá đa dạng.
 ### Mã nguồn áp dụng & kết quả 
 [Colab](https://colab.research.google.com/drive/1u_Qj7UJ_cr2gZL9TunJ4qFFYrCNd3JLK#scrollTo=-fv5IT3ZP97z)
+## TÀI LIỆU THAM KHẢO 
+[**[1] Đánh giá mạng DenseNet**](https://towardsdatascience.com/review-densenet-image-classification-b6631a8ef803)
+
+[**[2] DenseNet Keras**](https://keras.io/api/applications/densenet/)
+
+[**[3] DenseNet- Dense Convolutional Network**](https://towardsdatascience.com/review-densenet-image-classification-b6631a8ef803)
+
+
+[**[4] Introduction to DenseNet with TensorFlow**](https://www.pluralsight.com/guides/introduction-to-densenet-with-tensorflow)
