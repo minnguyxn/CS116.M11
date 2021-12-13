@@ -24,11 +24,10 @@
 | 2 | Hà Văn Thanh | 19522224 |
 | 3 | Nguyễn Đức Thắng | 19522206 |
 
-## Giới thiệu tổng quan về Convolutional Neural Network - CNN
-
 
 ## Giới thiệu tổng quan về mạng tích chập kết nối dày đặc - DenseNet
 DenseNet (Dense connected convolutional network) là một mạng CNN mới cho nhận dạng đối tượng trực quan (visual object recognition). Nó cũng gần giống Resnet nhưng có một vài điểm khác biệt. Densenet có cấu trúc gồm các khối dày đặc (dense block) và các tầng chuyển tiếp( transition layer). Các khối dày đặc định nghĩa cách các đầu vào và đầu ra được nối với nhau, trong khi các tầng chuyển tiếp kiểm soát số lượng kênh sao cho nó không quá lớn.
+![alt text](https://github.com/minz1337/CS116.M11/blob/main/image/densenet.png)
 - Bài toán thường được sử dụng: Sử dụng được trong hầu hết các bài toán phát hiện (detect) và nhận diện (recognize).
 
 
@@ -46,16 +45,18 @@ Ta có thể thấy công thức của ResNet cũng gần tương tự như khai
 Ý tưởng của DenseNet cũng như vậy, chúng ta sẽ sử dụng một mạng lưới các kết nối tắt dày đặc để liên kết các khối với nhau.
 
 Từ đầu vào <img src="https://latex.codecogs.com/svg.image?x" title="x" /> ta sẽ áp dụng liên tiếp một chuỗi các ánh xạ liên tiếp với cấp độ phức tạp tăng dần:
+![alt text](https://github.com/minz1337/CS116.M11/blob/main/image/pic14.png)
 
 <img src="https://latex.codecogs.com/svg.image?x&space;\to&space;f_{1}(x)&space;x&space;\to&space;f_{2}(x,f_{1}(x))...&space;x&space;\to&space;f_{4}(x,f_{3}(x,f_{2}(x,f_{1}(x))))" title="x \to f_{1}(x) x \to f_{2}(x,f_{1}(x))... x \to f_{4}(x,f_{3}(x,f_{2}(x,f_{1}(x))))" />
 
 DenseNet sẽ khác so với ResNet đó là chúng ta không cộng trực tiếp <img src="https://latex.codecogs.com/svg.image?x" title="x" /> vào <img src="https://latex.codecogs.com/svg.image?f(x)" title="f(x)" /> mà thay vào đó, các đầu ra của từng phép ánh xạ có cùng kích thước dài và rộng sẽ được concatenate với nhau thành một khối theo chiều sâu. Sau đó để giảm chiều dữ liệu chúng ta áp dụng tầng chuyển tiếp (translation layer). Tầng này là kết hợp của một layer tích chập giúp giảm độ sâu và một max pooling giúp giảm kích thước dài và rộng. 
+![alt text](https://github.com/minz1337/CS116.M11/blob/main/image/pic15.png)
 ## Ưu & nhược điểm của DenseNet
 ### Ưu điểm
 - DenseNet yêu cầu ít tham số đầu vào nhưng vẫn cho tỉ lệ chính xác cao. 
 - DenseNet chống lại overfitting rất hiệu quả.
 - Giảm được vanishing gradient (tình trạng biến mất đạo hàm ở các mạng neural nhiều lớp).
-- DenseNet sử dụng lại đặc trưng hiệu quả hơn, duy trì được các tínhnăng phức tạp thấp.
+- DenseNet sử dụng lại đặc trưng hiệu quả hơn, duy trì được các tính năng phức tạp thấp.
 ### Nhược điểm
 - DenseNet tiêu tốn rất nhiều bộ nhớ.
 ## Điều chỉnh siêu tham số cho mô hình DenseNet
