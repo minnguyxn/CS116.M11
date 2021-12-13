@@ -92,7 +92,6 @@ DenseNet sẽ khác so với ResNet đó là chúng ta không cộng trực ti�
 Vì Keras Tuner giúp dễ dàng xác định không gian tìm kiếm và tận dụng các thuật toán bao gồm để tìm các giá trị siêu tham số tốt nhất, do đó nhóm sử dụng keras tuner để tìm các siêu tham số.
 1. pooling:
 - ```pool=hp.Choice('pooling', values=['avg','max'])
-     model_d = DenseNet169(include_top= False,weights='imagenet',input_tensor=image_input,pooling=pool)```
 2. dropout:
 - ```hp_dropout = hp.Choice('Dropout', values=[0.3, 0.4, 0.5])```
 3. learning rate:
