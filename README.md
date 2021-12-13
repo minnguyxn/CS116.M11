@@ -63,7 +63,7 @@ DenseNet sẽ khác so với ResNet đó là chúng ta không cộng trực ti�
 - **include_top**: có bao gồm lớp được kết nối đầy đủ ở đầu mạng hay không.
 - **weights** : Trọng số của mô hình. một trong số None(khởi tạo ngẫu nhiên), 'imagenet' (đào tạo trước trên ImageNet) hoặc đường dẫn đến tệp weight.
 - **input_tensor**: tensor Keras tùy chọn (tức là đầu ra của layers.Input()) để sử dụng làm đầu vào hình ảnh cho mô hình.
-- **input_shape**: bộ hình dạng(shape) tùy chọn. Chỉ được chỉ định khi \textbf{include_top} là False.Nếu không hình dạng đầu vào phải có chính xác 3 kênh đầu vào và chiều rộng và chiều cao không được nhỏ hơn 32. Ví dụ: (200, 200, 3)sẽ là một giá trị hợp lệ.
+- **input_shape**: bộ hình dạng(shape) tùy chọn. Chỉ được chỉ định khi **include_top** là False.Nếu không hình dạng đầu vào phải có chính xác 3 kênh đầu vào và chiều rộng và chiều cao không được nhỏ hơn 32. Ví dụ: (200, 200, 3)sẽ là một giá trị hợp lệ.
 - **pooling**: Bắt buộc khi **include_top** là False. Gồm một trong các giá trị:
   -  None (đầu ra của mô hình sẽ là đầu ra tensor 4D của khối chập cuối cùng). 
   -  'avg' (trung bình cộng sẽ được áp dụng cho đầu ra của khối chập cuối cùng và do đó đầu ra của mô hình sẽ là một tensor 2D). 
