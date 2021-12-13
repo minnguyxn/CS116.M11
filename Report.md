@@ -59,6 +59,25 @@ DenseNet sẽ khác so với ResNet đó là chúng ta không cộng trực ti�
 - DenseNet sử dụng lại đặc trưng hiệu quả hơn, duy trì được các tính năng phức tạp thấp.
 ### Nhược điểm
 - DenseNet tiêu tốn rất nhiều bộ nhớ.
+## So sánh DenseNet trên các tập dữ liệu:
+### Bộ dữ liệu áp dụng
+- Bộ dữ liệu quy mô nhỏ CIFAR - 10
+
+![alt text](https://github.com/minz1337/CS116.M11/blob/main/image/CIFAR-10.png)
+
+- Bộ dữ liệu quy mô vừa CIFAR - 100
+
+![alt text](https://github.com/minz1337/CS116.M11/blob/main/image/CIFAR-100.png)
+
+- Bộ dữ liệu quy mô lớn : ImageNet
+
+![alt text](https://github.com/minz1337/CS116.M11/blob/main/image/ImageNet.png)
+
+### **Nhận xét**
+- DenseNet hoạt động tốt hơn mô hình ResNet trên các tập dữ liệu CIFAR - 10, CIFAR - 100, ImageNet,...
+- DenseNet, sử dụng các tính năng của tất cả các mức độ phức tạp nên việc học được tốt hơn, điều đó được chứng minh khi dữ liệu đào tạo không đủ thì DenseNet vẫn hoạt động tốt.
+
+
 ## Điều chỉnh siêu tham số cho mô hình DenseNet
 ### Các siêu tham số có trong mô hình & ý nghĩa
 - **include_top**: có bao gồm lớp được kết nối đầy đủ ở đầu mạng hay không.
