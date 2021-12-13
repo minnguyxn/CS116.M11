@@ -88,6 +88,15 @@ DenseNet sẽ khác so với ResNet đó là chúng ta không cộng trực ti�
 Ý tưởng của Random Search cũng giống như Grid Search, tuy nhiên Grid Search phải thử **tất cả** các kết hợp tham số, còn Random Search chỉ có thể chọn một vài kết hợp **ngẫu nhiên** trong số tất cả các kết hợp có sẵn.
 #### **Bayesian Optimization**:
 Ý tưởng của Bayesian Optimization là đưa ra một dự đoán thông minh về kết hợp tiếp theo sẽ được thử bằng cách xem kết quả của các kết hợp trước đó. Bất kỳ bộ siêu thông số nào tạo ra kết quả tốt hơn, nó sẽ hướng tới các giá trị đó. Do đó, tối ưu hóa việc lựa chọn các siêu tham số.
+#### **Keras tuner**:
+Vì Keras Tuner giúp dễ dàng xác định không gian tìm kiếm và tận dụng các thuật toán bao gồm để tìm các giá trị siêu tham số tốt nhất, do đó nhóm sử dụng keras tuner để tìm các siêu tham số.
+1. pooling:
+- ```pool=hp.Choice('pooling', values=['avg','max'])
+     model_d = DenseNet169(include_top= False,weights='imagenet',input_tensor=image_input,pooling=pool)```
+2. dropout:
+- ```hp_dropout = hp.Choice('Dropout', values=[0.3, 0.4, 0.5])```
+3. learning rate:
+- ```hp_learning_rate = hp.Choice('learning_rate', values=[1e-2, 1e-3, 1e-4])```
 ## **Áp dụng vào bài toán cụ thể**
 ### Bài toán & bộ dữ liệu sử dụng
 - Bài toán : phát hiện người bị nhiễm COVID thông qua ảnh chụp  CT Scan.
