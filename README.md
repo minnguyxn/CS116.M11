@@ -64,16 +64,20 @@ DenseNet sẽ khác so với ResNet đó là chúng ta không cộng trực ti�
 - **weights** : Trọng số của mô hình. một trong số None(khởi tạo ngẫu nhiên), 'imagenet' (đào tạo trước trên ImageNet) hoặc đường dẫn đến tệp weight.
 - **input_tensor**: tensor Keras tùy chọn (tức là đầu ra của layers.Input()) để sử dụng làm đầu vào hình ảnh cho mô hình.
 - **input_shape**: bộ hình dạng(shape) tùy chọn. Chỉ được chỉ định khi \textbf{include_top} là False.Nếu không hình dạng đầu vào phải có chính xác 3 kênh đầu vào và chiều rộng và chiều cao không được nhỏ hơn 32. Ví dụ: (200, 200, 3)sẽ là một giá trị hợp lệ.
-- **pooling**: Bắt buộc khi **include_top** là False. Gồm một trong các giá trị: None (đầu ra của mô hình sẽ là đầu ra tensor 4D của khối chập cuối cùng), 'avg' (trung bình cộng sẽ được áp dụng cho đầu ra của khối chập cuối cùng và do đó đầu ra của mô hình sẽ là một tensor 2D), 'max' ( tổng sẽ được áp dụng cho đầu ra của khối chập cuối cùng).
+- **pooling**: Bắt buộc khi **include_top** là False. Gồm một trong các giá trị:
+  -  None (đầu ra của mô hình sẽ là đầu ra tensor 4D của khối chập cuối cùng). 
+  -  'avg' (trung bình cộng sẽ được áp dụng cho đầu ra của khối chập cuối cùng và do đó đầu ra của mô hình sẽ là một tensor 2D). 
+  -  'max' ( tổng sẽ được áp dụng cho đầu ra của khối chập cuối cùng).
 - **class** :số lớp tùy chọn để phân loại hình ảnh thành, chỉ được chỉ định nếu **include_top** là True và  **weights** không được chỉ định (None).
 #### các siêu tham số liên quan đến cấu trúc mạng
 - **Number of Hidden Layers and units**: số lớp ẩn của mô hình
 - **Dropout**: bỏ bớt các lớp để tăng tổng quát hóa cho mô hình.
 - **Activation function**: Hàm kích hoạt, gồm các giá trị
--- **Sigmoid**: được sử dụng trong lớp đầu ra trong khi phân lớp nhị phân(binary predictions).
--- **Softmax**: được sử dụng trong lớp đầu ra trong khi phân lớp nhiều lớp(multi-class predictions).
+  - **Sigmoid**: được sử dụng trong lớp đầu ra trong khi phân lớp nhị phân(binary predictions).
+  - **Softmax**: được sử dụng trong lớp đầu ra trong khi phân lớp nhiều lớp(multi-class predictions).
 - **Learning Rate**: Tốc độ học của mô hình. Mặc định là 0.001.
 - **Momentum**: Giúp ngăn chặn giao động (bị kẹt ở một cực trị địa phương). Thường có giá trị từ 0.5 đến 0.9
 - **epochs**: số lần toàn bộ dữ liệu đào tạo được đưa vào mạng trong khi đào tạo.
 - **Batch size**: số lượng mẫu được cung cấp cho mạng để cập nhật trọng số.
 ### Các cách điều chỉnh siêu tham số cho mô hình
+#### **Manual Search (Tìm kiếm thủ công)**:
