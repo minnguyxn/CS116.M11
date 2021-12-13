@@ -28,7 +28,7 @@
 
 
 ## Giới thiệu tổng quan về mạng tích chập kết nối dày đặc - DenseNet
-DenseNet(Dense connected convolutional network) là một mạng CNN mới cho nhận dạng đối tượng trực quan (visual object recognition). Nó cũng gần giống Resnet nhưng có một vài điểm khác biệt. Densenet có cấu trúc gồm các khối dày đặc (dense block) và các tầng chuyển tiếp( transition layer). Các khối dày đặc định nghĩa cách các đầu vào và đầu ra được nối với nhau, trong khi các tầng chuyển tiếp kiểm soát số lượng kênh sao cho nó không quá lớn.
+DenseNet (Dense connected convolutional network) là một mạng CNN mới cho nhận dạng đối tượng trực quan (visual object recognition). Nó cũng gần giống Resnet nhưng có một vài điểm khác biệt. Densenet có cấu trúc gồm các khối dày đặc (dense block) và các tầng chuyển tiếp( transition layer). Các khối dày đặc định nghĩa cách các đầu vào và đầu ra được nối với nhau, trong khi các tầng chuyển tiếp kiểm soát số lượng kênh sao cho nó không quá lớn.
 - Bài toán thường được sử dụng: Sử dụng được trong hầu hết các bài toán phát hiện (detect) và nhận diện (recognize).
 
 
@@ -54,7 +54,7 @@ DenseNet sẽ khác so với ResNet đó là chúng ta không cộng trực ti�
 ### Ưu điểm
 - DenseNet yêu cầu ít tham số đầu vào nhưng vẫn cho tỉ lệ chính xác cao. 
 - DenseNet chống lại overfitting rất hiệu quả.
-- Giảm được vanishing gradient( tình trạng biến mất đạo hàm ở các mạng neural nhiều lớp).
+- Giảm được vanishing gradient (tình trạng biến mất đạo hàm ở các mạng neural nhiều lớp).
 - DenseNet sử dụng lại đặc trưng hiệu quả hơn, duy trì được các tínhnăng phức tạp thấp.
 ### Nhược điểm
 - DenseNet tiêu tốn rất nhiều bộ nhớ.
@@ -73,8 +73,8 @@ DenseNet sẽ khác so với ResNet đó là chúng ta không cộng trực ti�
 - **Number of Hidden Layers and units**: số lớp ẩn của mô hình
 - **Dropout**: bỏ bớt các lớp để tăng tổng quát hóa cho mô hình.
 - **Activation function**: Hàm kích hoạt, gồm các giá trị
-  - **Sigmoid**: được sử dụng trong lớp đầu ra trong khi phân lớp nhị phân(binary predictions).
-  - **Softmax**: được sử dụng trong lớp đầu ra trong khi phân lớp nhiều lớp(multi-class predictions).
+  - **Sigmoid**: được sử dụng trong lớp đầu ra trong khi phân lớp nhị phân (binary predictions).
+  - **Softmax**: được sử dụng trong lớp đầu ra trong khi phân lớp nhiều lớp (multi-class predictions).
 - **Learning Rate**: Tốc độ học của mô hình. Mặc định là 0.001.
 - **Momentum**: Giúp ngăn chặn giao động (bị kẹt ở một cực trị địa phương). Thường có giá trị từ 0.5 đến 0.9
 - **epochs**: số lần toàn bộ dữ liệu đào tạo được đưa vào mạng trong khi đào tạo.
@@ -104,7 +104,7 @@ DenseNet sẽ khác so với ResNet đó là chúng ta không cộng trực ti�
     params = grid_result.cv_results_['params']
     for mean, stdev, param in zip(means, stds, params):
     print("%f (%f) with: %r" % (mean, stdev, param))
-#### **Random Search(Tìm kiếm ngẫu nhiên)**:
+#### **Random Search (Tìm kiếm ngẫu nhiên)**:
 Ý tưởng của Random Search cũng giống như Grid Search, tuy nhiên Grid Search phải thử **tất cả** các kết hợp tham số, còn Random Search chỉ có thể chọn một vài kết hợp **ngẫu nhiên** trong số tất cả các kết hợp có sẵn.
 
     
@@ -118,6 +118,7 @@ DenseNet sẽ khác so với ResNet đó là chúng ta không cộng trực ti�
     model.summary()
 #### **Bayesian Optimization**:
 Ý tưởng của Bayesian Optimization là đưa ra một dự đoán thông minh về kết hợp tiếp theo sẽ được thử bằng cách xem kết quả của các kết hợp trước đó. Bất kỳ bộ siêu thông số nào tạo ra kết quả tốt hơn, nó sẽ hướng tới các giá trị đó. Do đó, tối ưu hóa việc lựa chọn các siêu tham số.
+
     from skopt import BayesSearchCV
     batch_size = [10, 20, 40, 60, 80, 100,200,500]
     epochs = [10, 50, 100]
