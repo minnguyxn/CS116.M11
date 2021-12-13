@@ -96,3 +96,4 @@ DenseNet sẽ khác so với ResNet đó là chúng ta không cộng trực ti�
 - Đây là bài toán phân lớp hình ảnh (phù hợp với model tìm hiểu).
 - Bộ data đủ lớn và khá đa dạng.
 ### Mã nguồn áp dụng & kết quả 
+[Colab](https://colab.research.google.com/drive/1u_Qj7UJ_cr2gZL9TunJ4qFFYrCNd3JLK#scrollTo=-fv5IT3ZP97z)
