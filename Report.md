@@ -61,15 +61,15 @@ DenseNet sẽ khác so với ResNet đó là chúng ta không cộng trực ti�
 - DenseNet tiêu tốn rất nhiều bộ nhớ.
 ## So sánh DenseNet trên các tập dữ liệu:
 ### Bộ dữ liệu áp dụng
-- Bộ dữ liệu quy mô nhỏ CIFAR - 10
+- Bộ dữ liệu quy mô nhỏ CIFAR - 10 (60 nghìn ảnh)
 
 ![alt text](https://github.com/minz1337/CS116.M11/blob/main/image/CIFAR-10.png)
 
-- Bộ dữ liệu quy mô vừa CIFAR - 100
+- Bộ dữ liệu quy mô vừa CIFAR - 100 (80 triệu ảnh)
 
 ![alt text](https://github.com/minz1337/CS116.M11/blob/main/image/CIFAR-100.png)
 
-- Bộ dữ liệu quy mô lớn : ImageNet
+- Bộ dữ liệu quy mô lớn : ImageNet (1 tỉ ảnh)
 
 ![alt text](https://github.com/minz1337/CS116.M11/blob/main/image/ImageNet.png)
 
