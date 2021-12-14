@@ -169,7 +169,14 @@ Vì Keras Tuner giúp dễ dàng xác định không gian tìm kiếm và tận 
 ### Mã nguồn áp dụng & kết quả 
 [![Open in colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1u_Qj7UJ_cr2gZL9TunJ4qFFYrCNd3JLK?usp=sharing)
 #### **kết quả**:
-![alt text](https://github.com/minz1337/CS116.M11/blob/main/image/Result.png)
+
+
+| STT | Model | accuracy | thời gian chạy (giây)|
+| :---: | --- | --- | --- |
+| 1 | DenseNet-169 | 0.8584 |  330   | 
+| 2 | resNet50v2  | 0.8204 |  268    |
+| 3 | VGG-16 | 0.8219 |    846    |
+
 ## TÀI LIỆU THAM KHẢO 
 [**[1] Đánh giá mạng DenseNet**](https://towardsdatascience.com/review-densenet-image-classification-b6631a8ef803)
 
