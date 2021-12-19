@@ -162,10 +162,12 @@ Vì Keras Tuner giúp dễ dàng xác định không gian tìm kiếm và tận 
 ## **Áp dụng vào bài toán cụ thể**
 ### Bài toán & bộ dữ liệu sử dụng
 - Bài toán : phát hiện người bị nhiễm COVID thông qua ảnh chụp  CT Scan.
-- Bộ dữ liệu sử dụng : [data](https://www.kaggle.com/maedemaftouni/large-covid19-ct-slice-dataset)
+- Bộ dữ liệu sử dụng : [data](https://www.dropbox.com/s/7ck9lx3xf5t58d6/test.npz?dl=0)
 #### **Lý do sử dụng DenseNet cho bài toán**:
 - Đây là bài toán phân lớp hình ảnh (phù hợp với model tìm hiểu).
 - Bộ data đủ lớn và khá đa dạng.
+### **Các Model khác để so sánh :**
+- VGG16, ResNet: do đây là những Model kế trước của DenseNet, DenseNet được xây dựng dựa trên ResNet, nên chúng em sử dụng 2 Model này để tiện cho việc so sánh, kiểm thử xem ưu nhược điểm có giống như lý thuyết không.
 ### Mã nguồn áp dụng & kết quả 
 [![Open in colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1u_Qj7UJ_cr2gZL9TunJ4qFFYrCNd3JLK?usp=sharing)
 #### **kết quả**:
