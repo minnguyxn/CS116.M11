@@ -23,28 +23,28 @@
 | 1 | Nguyễn Xuân Minh | 19522054 | 
 | 2 | Hà Văn Thanh | 19522224 |
 | 3 | Nguyễn Đức Thắng | 19522206 |
-## **MỤC LỤC**
+# **MỤC LỤC**
 - [**Giới thiệu tổng quan về mạng tích chập kết nối dày đặc - DenseNet**](#giới-thiệu-tổng-quan-về-mạng-tích-chập-kết-nối-dày-đặc---densenet)
 - [**Nguyên lí hoạt động của DenseNet**](#nguyên-lí-hoạt-động-của-densenet)
 - [**Ưu & nhược điểm của DenseNet**](#ưu--nhược-điểm-của-densenet)
   - [Ưu điểm](#ưu-điểm)
   - [Nhược điểm](#nhược-điểm)
-- [**So sánh DenseNet trên các tập dữ liệu:**](#so-sánh-densenet-trên-các-tập-dữ-liệu)
+- [**So sánh DenseNet với ResNet trên các tập dữ liệu**](#so-sánh-densenet-với-resnet-trên-các-tập-dữ-liệu)
   - [Bộ dữ liệu áp dụng](#bộ-dữ-liệu-áp-dụng)
   - [Nhận xét](#nhận-xét)
 - [**Điều chỉnh siêu tham số cho mô hình DenseNet**](#điều-chỉnh-siêu-tham-số-cho-mô-hình-densenet)
   - [Các siêu tham số có trong mô hình & ý nghĩa](#các-siêu-tham-số-có-trong-mô-hình--ý-nghĩa)
     - [các siêu tham số liên quan đến cấu trúc mạng](#các-siêu-tham-số-liên-quan-đến-cấu-trúc-mạng)
   - [Các cách điều chỉnh siêu tham số cho mô hình](#các-cách-điều-chỉnh-siêu-tham-số-cho-mô-hình)
-    - [Manual Search (Tìm kiếm thủ công):](#manual-search-tìm-kiếm-thủ-công)
-    - [Grid Search (Xác nhận chéo):](#grid-search-xác-nhận-chéo)
-    - [Random Search (Tìm kiếm ngẫu nhiên):](#random-search-tìm-kiếm-ngẫu-nhiên)
-    - [Bayesian Optimization:](#bayesian-optimization)
-    - [Keras tuner:](#keras-tuner)
+    - [Manual Search (Tìm kiếm thủ công)](#manual-search-tìm-kiếm-thủ-công)
+    - [Grid Search (Xác nhận chéo)](#grid-search-xác-nhận-chéo)
+    - [Random Search (Tìm kiếm ngẫu nhiên)](#random-search-tìm-kiếm-ngẫu-nhiên)
+    - [Bayesian Optimization](#bayesian-optimization)
+    - [Keras tuner](#keras-tuner)
 - [**Áp dụng vào bài toán cụ thể**](#áp-dụng-vào-bài-toán-cụ-thể)
   - [Bài toán & bộ dữ liệu sử dụng](#bài-toán--bộ-dữ-liệu-sử-dụng)
-    - [Lý do sử dụng DenseNet cho bài toán:](#lý-do-sử-dụng-densenet-cho-bài-toán)
-  - [Các Model khác để so sánh :](#các-model-khác-để-so-sánh-)
+    - [Lý do sử dụng DenseNet cho bài toán](#lý-do-sử-dụng-densenet-cho-bài-toán)
+  - [Các Model khác để so sánh](#các-model-khác-để-so-sánh)
   - [Mã nguồn áp dụng & kết quả](#mã-nguồn-áp-dụng--kết-quả)
   - [kết quả:](#kết-quả)
 - [**TÀI LIỆU THAM KHẢO**](#tài-liệu-tham-khảo)
@@ -83,7 +83,7 @@ DenseNet sẽ khác so với ResNet đó là chúng ta không cộng trực ti�
 - DenseNet sử dụng lại đặc trưng hiệu quả hơn, duy trì được các tính năng phức tạp thấp.
 ### Nhược điểm
 - DenseNet tiêu tốn rất nhiều bộ nhớ.
-## **So sánh DenseNet trên các tập dữ liệu:**
+## **So sánh DenseNet với ResNet trên các tập dữ liệu**
 ### Bộ dữ liệu áp dụng
 - Bộ dữ liệu quy mô nhỏ CIFAR - 10 (60 nghìn ảnh)
 
@@ -124,9 +124,9 @@ DenseNet sẽ khác so với ResNet đó là chúng ta không cộng trực ti�
 - **epochs**: số lần toàn bộ dữ liệu đào tạo được đưa vào mạng trong khi đào tạo.
 - **Batch size**: số lượng mẫu được cung cấp cho mạng để cập nhật trọng số.
 ### Các cách điều chỉnh siêu tham số cho mô hình
-#### Manual Search (Tìm kiếm thủ công):
+#### Manual Search (Tìm kiếm thủ công)
  Ý tưởng là đầu tiên thực hiện các bước nhảy vọt về giá trị và sau đó là những bước nhảy nhỏ để tập trung vào một giá trị cụ thể hoạt động tốt hơn.
-#### Grid Search (Xác nhận chéo):
+#### Grid Search (Xác nhận chéo)
 Ý tưởng của Grid Search là thử tất cả các kết hợp đầy đủ của các giá trị tham số do chính mình cung cấp và chọn giá trị tốt nhất trong số đó.
 
     from sklearn.model_selection import GridSearchCV
@@ -148,7 +148,7 @@ DenseNet sẽ khác so với ResNet đó là chúng ta không cộng trực ti�
     params = grid_result.cv_results_['params']
     for mean, stdev, param in zip(means, stds, params):
     print("%f (%f) with: %r" % (mean, stdev, param))
-#### Random Search (Tìm kiếm ngẫu nhiên):
+#### Random Search (Tìm kiếm ngẫu nhiên)
 Ý tưởng của Random Search cũng giống như Grid Search, tuy nhiên Grid Search phải thử **tất cả** các kết hợp tham số, còn Random Search chỉ có thể chọn một vài kết hợp **ngẫu nhiên** trong số tất cả các kết hợp có sẵn.
 
     
@@ -160,7 +160,7 @@ DenseNet sẽ khác so với ResNet đó là chúng ta không cộng trực ti�
     tuner.search(train_df,train_labl,epochs=3,validation_data=(train_df,train_labl))
     model=tuner.get_best_models(num_models=1)[0]
     model.summary()
-#### Bayesian Optimization:
+#### Bayesian Optimization
 Ý tưởng của Bayesian Optimization là đưa ra một dự đoán thông minh về kết hợp tiếp theo sẽ được thử bằng cách xem kết quả của các kết hợp trước đó. Bất kỳ bộ siêu thông số nào tạo ra kết quả tốt hơn, nó sẽ hướng tới các giá trị đó. Do đó, tối ưu hóa việc lựa chọn các siêu tham số.
 
     from skopt import BayesSearchCV
@@ -175,7 +175,7 @@ DenseNet sẽ khác so với ResNet đó là chúng ta không cộng trực ti�
     params = dict(batch_size=batch_size, epochs=epochs,learn_rate=learn_rate, momentum=momentum,init_mode=init_mode,activation=activation,dropout_rate=dropout_rate,          weight_constraint=weight_constraint)
     search = BayesSearchCV(estimator=model(), search_spaces=params, n_jobs=-1, cv=cv)
     model.summary()
-#### Keras tuner:
+#### Keras tuner
 Vì Keras Tuner giúp dễ dàng xác định không gian tìm kiếm và tận dụng các thuật toán bao gồm để tìm các giá trị siêu tham số tốt nhất, do đó nhóm sử dụng keras tuner để tìm các siêu tham số.
 1. pooling:
 - ```pool=hp.Choice('pooling', values=['avg','max'])```
@@ -187,10 +187,10 @@ Vì Keras Tuner giúp dễ dàng xác định không gian tìm kiếm và tận 
 ### Bài toán & bộ dữ liệu sử dụng
 - Bài toán : phát hiện người bị nhiễm COVID thông qua ảnh chụp  CT Scan.
 - Bộ dữ liệu sử dụng : [data](https://www.dropbox.com/s/7ck9lx3xf5t58d6/test.npz?dl=0)
-#### Lý do sử dụng DenseNet cho bài toán:
+#### Lý do sử dụng DenseNet cho bài toán
 - Đây là bài toán phân lớp hình ảnh (phù hợp với model tìm hiểu).
 - Bộ data đủ lớn và khá đa dạng.
-### Các Model khác để so sánh :
+### Các Model khác để so sánh 
 - VGG16, ResNet: do đây là những Model kế trước của DenseNet, DenseNet được xây dựng dựa trên ResNet, nên chúng em sử dụng 2 Model này để tiện cho việc so sánh, kiểm thử xem ưu nhược điểm có giống như lý thuyết không.
 ### Mã nguồn áp dụng & kết quả 
 [![Open in colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1u_Qj7UJ_cr2gZL9TunJ4qFFYrCNd3JLK?usp=sharing)
