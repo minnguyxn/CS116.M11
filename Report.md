@@ -46,7 +46,8 @@
     - [Lý do sử dụng DenseNet cho bài toán](#lý-do-sử-dụng-densenet-cho-bài-toán)
   - [Các Model khác để so sánh](#các-model-khác-để-so-sánh)
   - [Mã nguồn áp dụng & kết quả](#mã-nguồn-áp-dụng--kết-quả)
-  - [kết quả:](#kết-quả)
+  - [kết quả](#kết-quả)
+  - [Đánh giá](#đánh-giá)
 - [**TÀI LIỆU THAM KHẢO**](#tài-liệu-tham-khảo)
 
 ## **Giới thiệu tổng quan về mạng tích chập kết nối dày đặc - DenseNet**
@@ -194,7 +195,7 @@ Vì Keras Tuner giúp dễ dàng xác định không gian tìm kiếm và tận 
 - VGG16, ResNet: do đây là những Model kế trước của DenseNet, DenseNet được xây dựng dựa trên ResNet, nên chúng em sử dụng 2 Model này để tiện cho việc so sánh, kiểm thử xem ưu nhược điểm có giống như lý thuyết không.
 ### Mã nguồn áp dụng & kết quả 
 [![Open in colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1u_Qj7UJ_cr2gZL9TunJ4qFFYrCNd3JLK?usp=sharing)
-### kết quả:
+### kết quả
 
 
 | STT | Model | accuracy | thời gian chạy (giây)|
@@ -202,7 +203,9 @@ Vì Keras Tuner giúp dễ dàng xác định không gian tìm kiếm và tận 
 | 1 | DenseNet-169 | 0.8584 |  330   | 
 | 2 | resNet50v2  | 0.8204 |  268    |
 | 3 | VGG-16 | 0.8219 |    846    |
-
+### Đánh giá
+- DenseNet cho kết quả tốt nhất trong 3 mô hình nhưng thời gian chạy lại lâu hơn resNet.
+- VGG16 có thời gian chạy lại lâu nhất trong số 3 mô hình thử nghiệm.
 ## **TÀI LIỆU THAM KHẢO**
 [**[1] Đánh giá mạng DenseNet**](https://towardsdatascience.com/review-densenet-image-classification-b6631a8ef803)
 
